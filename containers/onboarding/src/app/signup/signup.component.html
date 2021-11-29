@@ -1,0 +1,53 @@
+
+<div class="signup-container">
+  <form [formGroup]="signUpForm">
+    <div class="form-control">
+      <label for="username">username</label>
+      <input id="username"
+             placeholder="username"
+             type="text"
+             formControlName="username"
+             required>
+    </div>
+    <div class="form-control">
+      <label for="password">password</label>
+      <input id="password"
+             placeholder="password"
+             type="text"
+             formControlName="password"
+             required>
+    </div>
+    <div class="form-control">
+      <label for="name">name</label>
+      <input id="name"
+             placeholder="name"
+             type="text"
+             formControlName="name"
+             required>
+    </div>
+    <div class="form-control">
+      <label for="balance">balance</label>
+      <input id="balance"
+             placeholder="balance"
+             type="text"
+             formControlName="balance"
+             required>
+    </div>
+  </form>
+  <div class="button-group">
+    <div tabindex="0"
+         role="button"
+         class="btn signin"
+         [ngClass]="{'disabled': !signUpForm.touched || !signUpForm.valid }"
+         (click)="submit()"
+         (keyup)="listenForEnter($event)">
+        Sign Up
+    </div>
+  </div>
+
+  <div class="signup-spacer">
+    <h3><span>OR</span></h3>
+  </div>
+
+  <div tabindex="0" role="button" class="btn signup" (click)="userService.redirectToLogin()">Sign In</div>
+</div>

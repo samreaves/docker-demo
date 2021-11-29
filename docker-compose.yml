@@ -20,8 +20,17 @@ services:
 # retail Angular app
   retail:
 
-      # Build local configuration of nginx
+      # Build local configuration of retail app
       build: ./containers/retail-app
+
+      # Link web container
+      links:
+          - web:web
+
+  onboarding:
+
+      # Build local configuration of onboarding app
+      build: ./containers/onboarding
 
       # Link web container
       links:

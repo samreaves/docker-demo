@@ -1,0 +1,67 @@
+
+.form-control {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  label {
+    width: 0px;
+    visibility: hidden;
+  }
+  input {
+    width: 100%;
+    font-size: 22px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: white;
+    border: solid 1px grey;
+    padding: 8px;
+  }
+}
+
+.signin, .signup {
+  border-radius: 8px;
+  color: white;
+  display: inline-flex;
+  padding: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signin {
+  background: green;
+  &.disabled {
+    background: grey;
+  }
+  font-size: 22px;
+}
+
+.signup {
+  margin-top: 24px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  background: blue;
+  width: 300px;
+}
+
+.button-group {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.signup-spacer {
+  margin-top: 22px;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}
