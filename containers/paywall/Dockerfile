@@ -1,5 +1,5 @@
-# Begin with Linux distro with only node installed
-FROM node:latest
+# Begin with raw Linux distro
+FROM mhart/alpine-node:7.9.0
 
 # I am the wizard who conjured this machine
 MAINTAINER Sam Reaves
@@ -7,17 +7,14 @@ MAINTAINER Sam Reaves
 # On container start, build src directory inside
 RUN mkdir /src
 
-# Install global node monitor
-RUN npm install nodemon -g
+# Add local current directory to container's src directory
+ADD . /src
 
 # Set src directory as default directory for start command
 WORKDIR /src
 
-# Add local current directory to container's src directory
-ADD . /src
-
 # Install dependencies
-RUN npm install
+RUN npm install --only=production
 
 # Open port 3000
 EXPOSE 3000

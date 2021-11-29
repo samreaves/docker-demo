@@ -1,0 +1,18 @@
+{
+  "extends": "rallycoding",
+  "rules": {
+    "arrow-body-style": "off",
+    "brace-style": ["error", "stroustrup"],
+    "import/no-extraneous-dependencies": [error, { devDependencies: true }],
+    "max-len": "off",
+    "no-multi-spaces": "off",
+    "no-prototype-builtins": "off",
+    "one-var": off,
+    "one-var-declaration-per-line": off,
+    "padded-blocks": "off",
+    "react/require-extension": "off"
+  },
+  "env": {
+    "browser": true
+  }
+}

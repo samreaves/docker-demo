@@ -1,0 +1,83 @@
+version: "2"
+services:
+
+  # nginx proxy server container
+  nginx:
+
+      # Build local configuration of nginx
+      build: ./containers/nginx-local
+
+      # Link web container
+      links:
+          - web:web
+          - retail:retail
+
+      # Listen port 80 and 443
+      ports:
+          - "80:80"
+
+
+# retail Angular app
+  retail:
+
+      # Build local configuration of nginx
+      build: ./containers/retail-app
+
+      # Link web container
+      links:
+          - web:web
+
+  # Paywall Server
+  web:
+
+      # Build local configuration of paywall webserver
+      build: ./containers/paywall
+
+      environment:
+        - LOGIN_URL=192.168.99.100/login
+        - MONGO_URI=mongodb://root:password@mongodb:27017/paywall?authSource=admin&connectTimeoutMS=5000
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+        - REDIS_PASSWORD=secret
+        - TOKEN_SECRET=DonkeysAreBothInsecureAndUnsecure
+
+      # Link redis and mongo containers
+      links:
+          - mongodb:mongodb
+          - redis:redis
+
+  # Redis token cache
+  redis:
+
+    image: redis:latest
+
+    #
+    command: >
+     --requirepass secret
+
+    # Map machine's port 6379 with container's 6379
+    ports:
+      - "6379:6379"
+
+  # Mongo Database
+  mongodb:
+
+    image: mongo:3.4.2
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=paywall
+
+    # Map machine's port 27017 with container's 27017
+    ports:
+      - "27017:27017"
+
+  # Mongo Seed Queries for testing
+  mongo-seed:
+    image: mongo:3.2.6
+
+    links:
+      - mongodb
+
+    command:
+      'bash -c "mongoimport --host mongodb --username root --password password --authenticationDatabase admin --db paywall --collection users --type json --file ./seed-data/seed.json --jsonArray"'
