@@ -1,0 +1,7 @@
+<div class="home" *ngIf="user else loading">
+  <h1>Welcome back, {{ user?.name }}</h1>
+
+  <h3>Your balance is {{ user?.balance | currency:'USD' }}</h3>
+</div>
+
+<ng-template #loading>Loading...</ng-template>
