@@ -17,7 +17,7 @@
  
    try {
     /* If verified, send 200 */
-    response.status(200);
+    response.status(200).send();
    }
    catch (verifyRouteError) {
      console.error('Error on login route: ', verifyRouteError);

@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     {
       provide: APP_BASE_HREF,
-      useValue: '/retail/'
+      useValue: '/onboarding/'
     }
   ],
   bootstrap: [AppComponent]
