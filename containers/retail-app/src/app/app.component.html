@@ -1,0 +1,12 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+   <div class="toolbar-container">
+    <div *ngIf="userService.getUser() | async" class="btn logout" (click)="userService.signOut()">Log out</div>
+   </div>
+</div>
+
+<div class="content" role="main">
+
+  <router-outlet></router-outlet>
+
+</div>

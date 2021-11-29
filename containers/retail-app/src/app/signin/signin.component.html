@@ -1,0 +1,37 @@
+
+<div class="signin-container">
+  <form [formGroup]="signInForm">
+    <div class="form-control">
+      <label for="username">username</label>
+      <input id="username"
+             placeholder="username"
+             type="text"
+             formControlName="username"
+             required>
+    </div>
+    <div class="form-control">
+      <label for="password">password</label>
+      <input id="password"
+             placeholder="password"
+             type="text"
+             formControlName="password"
+             required>
+    </div>
+  </form>
+  <div class="button-group">
+    <div tabindex="0"
+         role="button"
+         class="btn signin"
+         [ngClass]="{'disabled': !signInForm.touched || !signInForm.valid }"
+         (click)="submit()"
+         (keyup)="listenForEnter($event)">
+        Sign In
+    </div>
+  </div>
+
+  <div class="signup-spacer">
+    <h3><span>OR</span></h3>
+  </div>
+
+  <div tabindex="0" role="button" class="btn signup" (click)="userService.redirectToSignUp()">Sign Up</div>
+</div>
