@@ -33,13 +33,13 @@ signUpRoute.post('/', doesUserExist, (request, response) => {
       });
     })
     .catch((createUserError) => {
-      console.error('Error on login route: ', createUserError);
+      console.error('Error on signup route: ', createUserError);
       response.status(500).end('Server error');
     });
 
   }
   catch (signUpRouteError) {
-    console.error('Error on login route: ', signUpRouteError);
+    console.error('Error on signup route: ', signUpRouteError);
     response.status(500).end('Server error');
   }
 });

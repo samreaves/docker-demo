@@ -14,6 +14,9 @@
 const login = require('./routes/login/login'),
      logout = require('./routes/logout/logout'),
      signup = require('./routes/signup/signup'),
+     verify = require('./routes/verify/verify');
+     verifyToken = require('./middlewares/verify_token/verify_token');
+
     express = require('express'),
   authRoute = express.Router();
 
@@ -30,6 +33,9 @@ authRoute.use('/logout', logout);
 
 // Use sign up controller for sign up route
 authRoute.use('/signup', signup);
+
+// Use verify controller for verify route
+authRoute.use('/verify', verifyToken, verify);
 
 // Export auth route
 module.exports = authRoute;
