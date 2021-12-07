@@ -10,7 +10,6 @@ services:
       # Link web container
       links:
           - web:web
-          - retail:retail
 
       # Listen port 80 and 443
       ports:
