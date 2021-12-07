@@ -10,7 +10,6 @@ services:
       # Link web container
       links:
           - web:web
-          - retail:retail
 
       # Listen port 80 and 443
       ports:
@@ -22,15 +21,6 @@ services:
 
       # Build local configuration of retail app
       build: ./containers/retail-app
-
-      # Link web container
-      links:
-          - web:web
-
-  onboarding:
-
-      # Build local configuration of onboarding app
-      build: ./containers/onboarding
 
       # Link web container
       links:
